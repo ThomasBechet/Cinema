@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SessionService } from '../session.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-register',
@@ -10,7 +11,7 @@ import { SessionService } from '../session.service';
 export class RegisterComponent implements OnInit {
 	angForm: FormGroup;
 
-	constructor(private fb: FormBuilder, private session : SessionService) {
+	constructor(private fb: FormBuilder, private session : SessionService, private router : Router) {
 		this.createForm();
 	}
 
@@ -72,6 +73,7 @@ export class RegisterComponent implements OnInit {
 		this.session.register(this.angForm.value.name, this.angForm.value.email, this.angForm.value.password)
 		.then(() => {
 			console.log('created');
+			this.router.navigateByUrl('/home');
 		})
 		.catch(() => {
 			console.log('failed');

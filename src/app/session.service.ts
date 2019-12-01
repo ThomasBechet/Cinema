@@ -64,7 +64,7 @@ export class SessionService {
             localStorage.setItem('token', token);
             localStorage.setItem('username', username);
             localStorage.setItem('email', email);
-            resolve();
+            resolve(response);
           },
           (error) => {
             console.log(error);
@@ -99,14 +99,54 @@ export class SessionService {
             localStorage.setItem('token', token);
             localStorage.setItem('username', username);
             localStorage.setItem('email', email);
+            resolve();
+          } else {
+            reject();
           }
-          resolve();
         },
         (error) => {
           reject();
         }
       );
     });
+  }
+
+  update(newUserName, newEmail, newPassword) {
+    return new Promise((resolve, reject) => {
+      let token = localStorage.getItem('token');
+      if(token != null) {
+        const url = "http://34.77.176.92/users/";
+        const header = new HttpHeaders({
+          'Authorization': "Bearer " + token
+        });
+        const body = {
+          'name': newUserName,
+          'email': newEmail,
+          'password': newPassword
+        }
+        this.httpClient.patch(url, body, {headers: header}).subscribe(
+          (response) => {
+            if(response.hasOwnProperty('userPatched') && response.hasOwnProperty('token')) {
+              localStorage.setItem('username', response['userPatched']['name']);
+              localStorage.setItem('email', response['userPatched']['email']);
+              //Password is returned but it is useless
+
+              localStorage.setItem('token', response['token']);
+              
+              console.log("successfully patched");
+              resolve();
+            } else if(response.hasOwnProperty('errorMsg')) {
+              console.log("failed to patch");
+              reject(response['errorMsg']);
+            }
+          },
+          (error) => {
+            console.log("failed to patch (bad request)");
+            reject();
+          }
+        );
+      }
+    }); 
   }
 
   getUsername() : string {

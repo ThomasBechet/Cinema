@@ -28,10 +28,10 @@ export class LoginComponent implements OnInit {
 	}
 
 	verifConnection() {
-		console.log(this.angForm.value);
-
+		console.log("call");
 		this.session.connect(this.angForm.value.email, this.angForm.value.password)
 		.then((response) => {
+			
 			if(response['errorMsg']) {
 				console.log('bad password');
 			} else {
