@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
 
 			this.router.navigateByUrl('/home');
 		})
-		.catch(() => {
+		.catch((error) => {
 			alert("Bad identification");
 		});
 	}

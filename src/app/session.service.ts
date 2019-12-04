@@ -3,11 +3,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Md5} from 'ts-md5/dist/md5';
 
-enum HttpRequestType {
-  POST,
-  GET
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -28,16 +23,16 @@ export class SessionService {
     
   }
 
-  private buildAuthentificationHeader(token) {
-    return new HttpHeaders({
-      'Authorization': "bearer " + token
-    });
+  private buildAuthentificationHeader() {
+    return {
+      'Authorization': "bearer " + this.getToken()
+    };
   }
 
-  private send(url, header, body, patch) {
+  private send(url, header, body, method) {
     const httpHeader = new HttpHeaders(header);
     return new Promise((resolve, reject) => {
-      this.httpClient.post(url, body, {headers : httpHeader}).subscribe(
+      this.httpClient[method](url, body, {headers : httpHeader}).subscribe(
         (response) => {
           if(response.hasOwnProperty(this.KW_errorMsg)) {
             reject(response[this.KW_errorMsg]);
@@ -56,8 +51,8 @@ export class SessionService {
     return new Promise((resolve, reject) => {
       let token = localStorage.getItem(this.KW_token);
       if(token !== null) {
-        const header = this.buildAuthentificationHeader(token);
-        this.send(this.KW_url_preconnect, null, header, HttpRequestType.POST)
+        const header = this.buildAuthentificationHeader();
+        this.send(this.KW_url_preconnect, null, header, 'post')
         .then((response) => {
           this.setUsername(response['user']['name']);
           this.setEmail(response['user']['email']);
@@ -73,40 +68,23 @@ export class SessionService {
   }
 
   connect(email, password) {
-    
     const body = {
       'email': email,
       'password': Md5.hashStr(password)
     }
 
     return new Promise((resolve, reject) => {
-      this.send(this.KW_url_connect, null, body, HttpRequestType.POST)
+      this.send(this.KW_url_connect, null, body, 'post')
       .then((response) => {
+        this.setUsername(response['userName']);
+        this.setEmail(response['email']);
+        this.setToken(response['token']);
         resolve(response);
       })
       .catch((error) => {
         reject(error);
       });
     });
-
-    /*return new Promise((resolve, reject) => {
-        this.httpClient.post(url, body).subscribe(
-          (response) => {
-            console.log(response);
-            let token = response['token'];
-            let username = response['userName'];
-            localStorage.setItem('token', token);
-            localStorage.setItem('username', username);
-            localStorage.setItem('email', email);
-            resolve(response);
-          },
-          (error) => {
-            console.log(error);
-            reject();
-          }
-        );
-      }
-    );*/
   }
 
   register(username, email, password) {
@@ -118,84 +96,50 @@ export class SessionService {
     }
 
     return new Promise((resolve, reject) => {
-      this.send(this.KW_url_register, null, body, HttpRequestType.POST)
+      this.send(this.KW_url_register, null, body, 'post')
       .then((response) => {
-        localStorage.setItem(this.KW_token, response['token']);
         this.setUsername(response['username']);
         this.setEmail(response['email']);
+        this.setToken(response['token']);
         resolve(response);
       })
       .catch((error) => {
         reject(error);
       });
     });
-
-    /*return new Promise((resolve, reject) => {
-      this.httpClient.post(url, parameters).subscribe(
-        (response) => {
-          let token = response['token'];
-          if(token !== null) {
-            localStorage.setItem('token', token);
-            localStorage.setItem('username', username);
-            localStorage.setItem('email', email);
-            resolve();
-          } else {
-            reject();
-          }
-        },
-        (error) => {
-          reject();
-        }
-      );
-    });*/
   }
 
   update(newUserName, newEmail, newPassword) {
-
     return new Promise((resolve, reject) => {
       let token = localStorage.getItem(this.KW_token);
       if(token !== null) {
-
-      } else {
-
-      }
-    });
-
-    return new Promise((resolve, reject) => {
-      let token = localStorage.getItem('token');
-      if(token != null) {
-        const url = "http://34.77.176.92/users/";
-        const header = new HttpHeaders({
-          'Authorization': "bearer " + token
-        });
+        const header = this.buildAuthentificationHeader();
         const body = {
           'name': newUserName,
           'email': newEmail,
           'password': newPassword
         }
-        this.httpClient.patch(url, body, {headers: header}).subscribe(
-          (response) => {
-            if(response.hasOwnProperty('userPatched') && response.hasOwnProperty('token')) {
-              localStorage.setItem('username', response['userPatched']['name']);
-              localStorage.setItem('email', response['userPatched']['email']);
-              //Password is returned but it is useless
-
-              localStorage.setItem('token', response['token']);
-              
-              console.log("successfully patched");
-              resolve();
-            } else if(response.hasOwnProperty('errorMsg')) {
-              console.log("failed to patch");
-              reject(response['errorMsg']);
-            }
-          },
-          (error) => {
-            console.log("failed to patch (bad request)");
-            reject();
+        console.log(header);
+        console.log(body);
+        this.send(this.KW_url_update, header, body, 'patch')
+        .then((response) => {
+          if(response.hasOwnProperty('userPatched') && response.hasOwnProperty('token')) {
+            this.setToken(response['token']);
+            this.setUsername(response['userPatched']['name']);
+            this.setEmail(response['userPatched']['email']);
+            //Password is returned but it is useless
+            
+            console.log("successfully patched");
+            resolve(null);
           }
-        );
+        })
+        .catch((error) => {
+          reject(error);
+        });
+      } else {
+        reject("No token stored");
       }
-    }); 
+    });
   }
 
   disconnect() {
@@ -217,6 +161,13 @@ export class SessionService {
   }
   private setEmail(email) {
     localStorage.setItem(this.KW_email, email);
+  }
+  public getToken() : string {
+    let token = localStorage.getItem(this.KW_token);
+    return (token !== null) ? token : null;
+  }
+  private setToken(token) {
+    localStorage.setItem(this.KW_token, token);
   }
   public isConnected() : boolean {
     return (localStorage.getItem(this.KW_token) !== null);

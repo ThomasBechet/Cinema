@@ -16,12 +16,13 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.session.preconnect()
-    .then(() => {
+    .then((response) => {
       this.username = this.session.getUsername();
       this.email = this.session.getEmail();
     })
-    .catch(() => {
+    .catch((error) => {
       console.log('try to access home but could not preconnect');
+      console.log(error);
       this.router.navigateByUrl('/');  
     });
   }
@@ -33,11 +34,11 @@ export class HomeComponent implements OnInit {
   
   onPatch() {
     this.session.update("test2", "test2@gmail.com", "password")
-    .then(() => {
+    .then((response) => {
       console.log("success");
     })
-    .catch(() => {
-      console.log("failed");
+    .catch((error) => {
+      console.log(error);
     })
   }
 }
