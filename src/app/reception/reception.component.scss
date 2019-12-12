@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Mada&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:200,100,400');
+ ::ng-deep html, ::ng-deepbody {
+    font-family: 'Mada', sans-serif;
+    padding: 1em 2em;
+    font-size: 18px;
+    color: #aaa
+  }
+
+  ::ng-deep body {
+      /* background-image: linear-gradient(to right, rgb(14, 14, 14) 54%, rgba(14, 14, 14, 0.55) 70%, rgba(50, 50, 50, 0.5) 75%, rgba(100, 100, 100, 0.1), rgba(255, 255, 255, 0)), url('./images/Films/Wonder.jpg'); */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right center;
+      height: 100vh;
+      overflow:hidden;
+  }
+      
+      @media (max-width : 1160px) {
+        ::ng-deep body {
+          background-size: cover;
+        }
+      }
+  
+  ::ng-deep h1,h2 {
+    font-weight: 200;
+    margin: 0.4em 0;
+  }
+  ::ng-deep h1 { font-size: 2.5em; }
+  ::ng-deep h2 {
+    color: #888;
+    font-size: 1em;
+  }
+  
+  .mainLogo{
+      width:500px; 
+      margin-top:50px; 
+      margin-left:-30px;
+  }
+  
+  ::ng-deep i {
+    font-style: normal;
+  } 
+  
+  .accueilMain {
+      margin-left:-20px;
+  }
+  
+  ::ng-deep .buttonMain {
+      align-content: center;
+      margin-top: 20%;
+  }
+  
+  ::ng-deep .btn-dark {
+      background-color: #0e0e0e;
+      border-color: transparent;
+      border-radius: 50px;
+      margin-bottom: 30px;
+      width:400px;
+  }
+  
+  ::ng-deep .btn-outline-dark {
+      background-color: #fff;
+      border-color: transparent;
+      color: #0e0e0e;
+      border-radius: 50px;
+      margin-bottom: 30px;
+      width:400px;
+  }
+  

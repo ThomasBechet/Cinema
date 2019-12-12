@@ -1,0 +1,56 @@
+
+    <div class="container">
+    <h1 id="cinematch"  routerLink="/" >CINEMATCH</h1>
+    <h2>SLOGAN</h2>
+    <h1>Inscription</h1>
+    <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+            <!--br/>
+            <img src="../../img/man-user.png" class="userIcon"/>
+            <br/-->
+            <label>Adresse mail :</label>
+            <br/>
+            <input 
+                type="text" 
+                class="form-control"
+                formControlName="email"
+                id="emailIns" 
+                [ngStyle]="emailStyle" 
+                (keyup)="verifEmail($event)">
+            <br/><br/>
+            <label>Nom d'utilisateur :</label>
+            <br/>
+            <input 
+                type="text" 
+                class="form-control"
+                formControlName="name" 
+                id="userNameIns" >
+            <br/><br/>
+            <label>Mot de passe :</label>
+            <br/>
+            <input 
+                type="password" 
+                class="form-control"
+                formControlName="password" 
+                id="passwordIns" 
+                (keyup)="setPassword($event)">
+            <br/><br/>
+            <label>Confirmation :</label>
+            <br/>
+            <input 
+                type="password" 
+                class="form-control"
+                id="passwordSecIns" 
+                [ngStyle]="passwordStyle" 
+                (keyup)="confirmPassword($event)" >
+            <br/><br/>
+            <button 
+                type="button" 
+                class="btn btn-success" 
+                (click)="validateSub()">Valider</button>
+            <br/><br/>
+        </div>
+    
+    </form>
+</div>
+    

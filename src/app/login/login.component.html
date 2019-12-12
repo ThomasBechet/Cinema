@@ -1,0 +1,29 @@
+<div class="container">
+    <h1 id="cinematch" routerLink="/">CINEMATCH</h1>
+    <h2>SLOGAN</h2>
+    <h1>Connexion</h1>
+
+    <form [formGroup]="angForm" novalidate>
+
+        <div class="form-group">
+            <!--br/>
+                <img src="../../img/man-user.png" class="userIcon"/>
+                <br/-->
+            <label>Adresse mail :</label>
+            <br />
+            <input type="text" class="form-control" formControlName="email" id="emailConnect">
+            <br /><br />
+            <label>Mot de passe :</label>
+            <br />
+            <input type="password" class="form-control" formControlName="password" id="passwordConnect"
+            (keyup)="test()">
+            <br /><br />
+            <button type="submit" class="btn btn-success" (click)="verifConnection()">Se connecter</button>
+            <br /><br />
+            <a routerLink="/register">Créer un compte</a>
+            <br />
+            <br />
+        </div>
+    </form>
+
+</div>
