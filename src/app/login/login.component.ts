@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
 	}
 
 	verifConnection() {
-		console.log("call");
 		this.session.connect(this.angForm.value.email, this.angForm.value.password)
 		.then((response) => {
 			
