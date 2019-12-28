@@ -67,8 +67,18 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onGetMovies() {
+  onGetViewedMovies() {
     this.movies.getViewedMovies()
+    .then((value) => {
+      console.log(value);
+    })
+    .catch((value) => {
+      console.log(value);
+    });
+  }
+
+  onGetMovies() {
+    this.movies.getMovies(1, 20)
     .then((value) => {
       console.log(value);
     })
