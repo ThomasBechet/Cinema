@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FilmPageComponent } from '../film-page/film-page.component';
+import { MoviesService } from '../movies.service'
 
 @Component({
   selector: 'app-film',
@@ -7,19 +9,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class FilmComponent implements OnInit {
 
+  private _filmPage: FilmPageComponent;
   @Input() id: string;
   @Input() poster: string;
   @Input() title : string;
   @Input() runtime: string;
   @Input() genre: string;
 
-  constructor() { }
+  constructor(private filmService: MoviesService) { 
+    this._filmPage = new FilmPageComponent(filmService);
+  }
 
   ngOnInit() {
   }
 
-  test() {
-    console.log("ID : ", this.id);
+  setFilmPage(_id){
+    console.log("setFilmPage from FilmComponent : ", _id);
+    this._filmPage.setFilm(_id)
   }
+
+
 
 }

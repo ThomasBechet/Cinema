@@ -1,9 +1,9 @@
 <div>
-    <ul class="list-group" (click)="test()" routerLink="/film-page">
+    <ul class="list-group" (click)="setFilmPage(id)" routerLink="/film-page">
         <img src="{{ poster }}">
         <p>TITRE : {{ title }}</p>
-        <p>DUREE : {{ runtime }}</p>
-        <p>GENRE : {{ genre }}</p>
+        <p>DUREE : {{ runtime }} minutes </p>
+        <p>GENRE(S) : {{ genre }}</p>
     </ul>
     </div>
     
