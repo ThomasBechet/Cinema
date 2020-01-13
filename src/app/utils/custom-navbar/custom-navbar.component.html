@@ -1,13 +1,53 @@
-<nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand">CINEMATCH</a>
-        <ul class="nav navbar-nav" routerLinkActive="active">
-            <li class="nav-item"><a class="nav-link" routerLink="/home">Accueil</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/all-films">Tous les films</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/smart-films">SmartFilms</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/home">CineTeam</a></li>
-            <li class="nav-item"><a class="nav-link" routerLink="/home">Profil</a></li>
-        </ul>
+        <a class="navbar-brand" routerLink="/home">CINEMATCH</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/home">Accueil
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/film">Tous les films</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/smart-films">SmartFilms</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/home">CineTeam</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/home">Profil</a>
+                </li>
+            </ul>
+        </div>
     </div>
+</nav> -->
+<nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" routerLink="/">Cinematch</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="active"><a routerLink="/home">Film</a></li>
+                <li routerLinkActive="active"><a routerLink="/home">Mentions-legales</a></li>
+                <li routerLinkActive="active"><a routerLink="/home">Profile</a></li>
+            </ul>
+        </div>
+        <!-- /.nav-collapse -->
+    </div>
+    <!-- /.container -->
 </nav>
-<router-outlet></router-outlet>

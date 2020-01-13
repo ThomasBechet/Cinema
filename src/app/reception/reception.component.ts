@@ -17,6 +17,7 @@ export class ReceptionComponent implements OnInit {
     this.session.preconnect()
     .then(() => {
       this.router.navigateByUrl('/home');
+
     })
     .catch(() => {
 
@@ -31,6 +32,14 @@ export class ReceptionComponent implements OnInit {
     script.async = false;
     script.defer = true;
     body.appendChild(script);
+  }
+
+  login(){
+    if(this.session.getToken()){
+      window.location.pathname = '/home';
+    }
+    else window.location.pathname = '/login';
+
   }
 
 }

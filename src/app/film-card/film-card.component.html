@@ -1,0 +1,17 @@
+<div class="thumbnail">
+    <img src="{{movie.poster}}" *ngIf="poster_path">
+    <img src="../../assets/img/abstract-image.jpg" *ngIf="!poster_path">
+    <div class="caption">
+        <h4 class="text-ellipsis">
+            <a routerLink="/film/{{movie._id}}" title="{{movie.title}}">{{movie.title}}</a>
+        </h4>
+        <p><strong>Release Date: </strong>{{movie.released}}</p>
+        <p>
+            <a routerLink="/film/{{movie._id}}">View details &raquo;</a>
+            <small class="label label-success pull-right" *ngIf="movie.avgRating">
+                {{movie.avgRating | number }}
+                <i class="glyphicon glyphicon-star"></i>
+            </small>
+        </p>
+    </div>
+</div>
