@@ -13,6 +13,7 @@ export class ReceptionComponent implements OnInit {
   constructor(private router : Router, private session : SessionService) { }
 
   ngOnInit() {
+    this.loadScript('../assets/js/reception.js');
     this.session.preconnect()
     .then(() => {
       this.router.navigateByUrl('/home');
@@ -20,6 +21,16 @@ export class ReceptionComponent implements OnInit {
     .catch(() => {
 
     });
+  }
+
+  public loadScript(url: string) {
+    const body = <HTMLDivElement>document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.async = false;
+    script.defer = true;
+    body.appendChild(script);
   }
 
 }

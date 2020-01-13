@@ -1,56 +1,43 @@
-
-    <div class="container">
-    <h1 id="cinematch"  routerLink="/" >CINEMATCH</h1>
-    <h2>SLOGAN</h2>
-    <h1>Inscription</h1>
-    <form [formGroup]="angForm" novalidate>
-        <div class="form-group">
-            <!--br/>
-            <img src="../../img/man-user.png" class="userIcon"/>
-            <br/-->
-            <label>Adresse mail :</label>
-            <br/>
-            <input 
-                type="text" 
-                class="form-control"
-                formControlName="email"
-                id="emailIns" 
-                [ngStyle]="emailStyle" 
-                (keyup)="verifEmail($event)">
-            <br/><br/>
-            <label>Nom d'utilisateur :</label>
-            <br/>
-            <input 
-                type="text" 
-                class="form-control"
-                formControlName="name" 
-                id="userNameIns" >
-            <br/><br/>
-            <label>Mot de passe :</label>
-            <br/>
-            <input 
-                type="password" 
-                class="form-control"
-                formControlName="password" 
-                id="passwordIns" 
-                (keyup)="setPassword($event)">
-            <br/><br/>
-            <label>Confirmation :</label>
-            <br/>
-            <input 
-                type="password" 
-                class="form-control"
-                id="passwordSecIns" 
-                [ngStyle]="passwordStyle" 
-                (keyup)="confirmPassword($event)" >
-            <br/><br/>
-            <button 
-                type="button" 
-                class="btn btn-success" 
-                (click)="validateSub()">Valider</button>
-            <br/><br/>
+<div class="page">
+    <div class="signup__container">
+        <div class="container__child signup__thumbnail">
+            <div class="thumbnail__content text-center">
+                <h1 class="heading--primary">Bienvenue sur Cinématch</h1>
+                <h2 class="heading--secondary">Etes vous pret ?</h2>
+            </div>
+            <div class="signup__overlay"></div>
         </div>
-    
-    </form>
+        <div class="container__child signup__form">
+            <form [formGroup]="angForm" novalidate>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" formControlName="name" id="userNameIns">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" formControlName="email" id="emailIns"
+                        (keyup)="verifEmail($event)">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" formControlName="password" id="passwordIns"
+                        (keyup)="setPassword($event)">
+                </div>
+                <div class="form-group">
+                    <label for="passwordRepeat">Repeat Password</label>
+                    <input type="password" class="form-control" id="passwordSecIns" (keyup)="confirmPassword($event)">
+                </div>
+                <div class="m-t-lg">
+                    <ul class="list-inline">
+                        <li>
+                            <a routerLink="/"><input class="btn btn--form" type="submit" (click)="validateSub()" value="Register"/></a>
+                        </li><br>
+                        <li>
+                            <a class="signup__link" routerLink="/login">I am already a member</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
-    

@@ -46,12 +46,12 @@
       margin-left:-20px;
   }
   
-  ::ng-deep .buttonMain {
+  .buttonMain {
       align-content: center;
       margin-top: 20%;
   }
   
-  ::ng-deep .btn-dark {
+  .btn-dark {
       background-color: #0e0e0e;
       border-color: transparent;
       border-radius: 50px;
@@ -59,7 +59,7 @@
       width:400px;
   }
   
-  ::ng-deep .btn-outline-dark {
+  .btn-outline-dark {
       background-color: #fff;
       border-color: transparent;
       color: #0e0e0e;

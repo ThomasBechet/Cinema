@@ -1,7 +1,158 @@
-.container {
-    text-align: center;
+::ng-deep body {
+  background-color: #0e0e0e;
+  font-family: 'Mada', sans-serif;
+  margin: 0;
+  padding: 20px;
 }
 
-#cinematch {
-    cursor: pointer;
+::ng-deep i {
+  font-style: normal;
+}
+
+.page {
+  /* background: #D4D4CB; */
+  background-image: linear-gradient(to right, rgba(255, 255, 255,0.3) 0%,rgba(255, 255, 255, 0.3)), url('../../assets/img/collage.jpg');
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+  position: absolute;
+  place-content: center;
+  width: calc(100% - 40px);
+}
+
+::ng-deep a,
+[type="submit"] {
+  transition: all .25s ease-in;
+}
+
+.signup__container {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80rem;
+  height: 43rem;
+  border-radius: 0.1875rem;
+  box-shadow: 0px 0.1875rem 0.4375rem rgba(0, 0, 0, 0.25);
+}
+
+.signup__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(28, 29, 35, 0.76);
+}
+
+.container__child {
+  width: 50%;
+  height: 100%;
+  color: #fff;
+}
+
+.signup__thumbnail {
+  position: relative;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: url('../../assets/img/spectre-login.jpg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+}
+
+.thumbnail__content {
+  position: relative;
+  z-index: 2;
+}
+
+.thumbnail__content {
+  align-self: center;
+}
+
+::ng-deep h1,
+::ng-deep h2 {
+  font-weight: 300;
+  color: white;
+}
+
+.heading--primary {
+  font-size: 4rem;
+}
+
+.heading--secondary {
+  font-size: 2rem;
+}
+
+.signup__form {
+  padding: 3.5rem;
+  background: #fafafa;
+}
+
+::ng-deep label {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-control {
+  background-color: transparent;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  border-radius: 0;
+}
+.form-control:focus {
+  border-color: #111;
+}
+
+[type="text"] {
+  color: #111;
+  font-size: 20px;
+}
+
+[type="password"] {
+  color: #111;
+  font-size: 20px;
+}
+
+.btn--form {
+  padding: 1rem 5.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+  background: #111;
+  border-radius: 2.1875rem;
+  margin-left: 27%;
+  margin-top: 4px;
+}
+.btn--form:focus, .btn--form:hover {
+  background: #323232;
+  color: #fff;
+}
+
+.signup__link {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: underline;
+  color: #999;
+  margin-left: 35%;
+}
+.signup__link:focus, .signup__link:hover {
+  color: #787878;
 }

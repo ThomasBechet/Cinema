@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.loadScript('../assets/js/login.js');
+		this.loadScript('../assets/js/anime.js');
 		this.session.disconnect();
 	}
 
@@ -38,5 +40,15 @@ export class LoginComponent implements OnInit {
 		//.catch(() => {
 		//	alert("Bad identification");
 		//});
+	}
+
+	public loadScript(url: string) {
+		const body = <HTMLDivElement>document.body;
+		const script = document.createElement('script');
+		script.innerHTML = '';
+		script.src = url;
+		script.async = false;
+		script.defer = true;
+		body.appendChild(script);
 	}
 }
