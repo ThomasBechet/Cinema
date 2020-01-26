@@ -17,7 +17,7 @@ export class SmartFilmsComponent implements OnInit {
   parentSubject: Subject<string> = new Subject();
   film: string;
 
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog, ) {
     this.film = "Star Wars";
   }
 
@@ -49,12 +49,16 @@ export class SmartFilmsComponent implements OnInit {
   
 })
 export class QuizzFilm {
+  parentSubject: Subject<string> = new Subject();
 
 constructor(
   public dialogRef: MatDialogRef<QuizzFilm>,
   @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
-onNoClick(): void {
-  this.dialogRef.close();
-}
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  onClick(status) {
+    this.parentSubject.next(status);
+  }
 }
