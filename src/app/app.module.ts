@@ -13,12 +13,16 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { SmartFilmsComponent } from './smart-films/smart-films.component';
+import { QuizzFilm } from './smart-films/smart-films.component';
 import { CustomNavbarComponent } from './utils/custom-navbar/custom-navbar.component';
 import { FilmComponent } from './film/film.component';
 import { FilmCardComponent } from './film-card/film-card.component';
 import { FilmPageComponent } from './film-page/film-page.component';
 import { FilmMatchComponent } from './film-match/film-match.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+//import {DemoMaterialModule} from './smart-films/material-module';
+
 
 const appRoutes: Routes = [
 	{ path: '', component: ReceptionComponent },
@@ -47,9 +51,13 @@ const appRoutes: Routes = [
 	FilmPageComponent,
 	JwPaginationComponent,
 	FilmMatchComponent,
-	SmartFilmsComponent
-
+	SmartFilmsComponent,
+	QuizzFilm,
+	//DemoMaterialModule,
+	
+	
   ],
+  entryComponents: [QuizzFilm],
   exports: [
 	  RouterModule
   ],
@@ -58,7 +66,8 @@ const appRoutes: Routes = [
 	RouterModule.forRoot(appRoutes),
 	ReactiveFormsModule,
 	HttpClientModule,
-	BrowserAnimationsModule
+	BrowserAnimationsModule,
+	MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent, SmartFilmsComponent]
