@@ -1,9 +1,15 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, HostListener  } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 
 export interface DialogData {
   film: string ;
+}
+
+export enum KEY_CODE {
+  LEFT_ARROW = 37,
+  UP_ARROW = 38,
+  RIGHT_ARROW = 39
 }
 
 
@@ -16,29 +22,28 @@ export interface DialogData {
 export class SmartFilmsComponent implements OnInit {
   parentSubject: Subject<string> = new Subject();
   film: string;
+  quizDialog: MatDialogRef<QuizzFilm>;
 
   constructor(public dialog: MatDialog, ) {
-    this.film = "Star Wars";
+  
   }
-
+  
   ngOnInit() {
   }
-
-
+  
+  
   onClick(status) {
+    console.log("status : ", status);
     this.parentSubject.next(status);
   }
 
+  
   openDialog(): void {
-    const dialogRef = this.dialog.open(QuizzFilm, {
-      width: '250px',
-      data: {film: this.film}
-    });
+    this.quizDialog = this.dialog.open(QuizzFilm);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      //this.film = result;
-    });
+    //dialogRef.afterClosed().subscribe(result => {
+    //  console.log('The dialog was closed');
+    //});
   }
 }
 
@@ -58,7 +63,25 @@ constructor(
   onNoClick(): void {
     this.dialogRef.close();
   }
+
   onClick(status) {
     this.parentSubject.next(status);
   }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+
+    if (event.keyCode === KEY_CODE.LEFT_ARROW) {
+      this.onClick("like");
+    }
+    
+    if (event.keyCode === KEY_CODE.UP_ARROW) {
+      this.onClick("unseen");
+    }
+    if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
+      this.onClick("dislike");
+    }
+  
+  }
+
 }

@@ -5,5 +5,12 @@
     (dislike)='startAnimation("dislike")'
     (unseen)='startAnimation("unseen")'>
 <img [src]="poster" title="tphoto" alt="Photo" class="poster" />
+<!--div *ngIf="(title +  genre).length > 25; else elseBlock">
+    <div
+    matTooltip=" {{titre + genre}}">
+    <div class="title">BITE</div>
+</div>
+</div>
+<ng-template #elseBlock class="title"><div class="title">{{title}}, <span class="genre">{{genre}}</span></div></ng-template-->
 <div class="title">{{title}}, <span class="genre">{{genre}}</span></div>
 </div>

@@ -4,7 +4,7 @@
     overflow-y:hidden; 
     /*height: 720px;
     width: 400px;*/
-    background-color: #fff;
+    //background-color: #fff;
     margin: 0 auto;
     //border: 1px solid #c0c0c0;
   }
@@ -42,10 +42,12 @@
       display: inline-block;
       top: 50px;
       left: 25px;
-      border: 10px solid #f0f0f0;
+      cursor: pointer;
+      border: 10px solid #e0be8a
   }
   .tno i {
-      color: #ff695b;
+      //color: #ff695b;
+      color: #f90;
       font-size: 80px;
       padding: 17px 28px;
   }
@@ -61,13 +63,15 @@
       display: inline-block;
       left: 12px;
       top: 30px;
-      border: 10px solid #f0f0f0;
+      border: 10px solid #e0be8a;
+      cursor: pointer;
       padding: 20px
   }
   .tseen .fa-eye-slash {
       font-size: 30px;
       padding: 10px 2px;
-      color: #DDDDDD;
+      //color: #DDDDDD;
+      color: #f90;
   }
   .tyes {
       background-color: #fff;
@@ -81,10 +85,12 @@
       display: inline-block;
       top: 48px;
       left: 0px;
-      border: 10px solid #f0f0f0;
+      border: 10px solid #e0be8a;
+      cursor: pointer;
   }
   .tyes i {
-      color: #5de19c;
+      //color: #5de19c;
+      color: #f90;
       font-size: 60px;
       padding: 35px 30px;
   }
@@ -122,6 +128,11 @@
     margin-bottom: 50px;
 }
 
+.tquit {
+    color: #f90;
+    font-size: 20px;
+    cursor: pointer;
+}
 /*::body *{
     background-color: #323232;
 }*/

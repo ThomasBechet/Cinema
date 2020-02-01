@@ -1,18 +1,23 @@
+img {
+    height: inherit;
+    width: inherit;
+}
+
 .tphoto {
     width: 350px;
-    height: 350px;
+    height: 450px;
     overflow: hidden;
     margin: 0 auto;
     position: relative;
     top: 15px;
-    border-radius: 10px;
-    -moz-border-radius: 10px;
-    -o-border-radius: 10px;
-    -ms-border-radius: 10px;
+    //border-radius: 10px;
+    //-moz-border-radius: 10px;
+    //-o-border-radius: 10px;
+    //-ms-border-radius: 10px;
     border: 1px solid #c0c0c0;
     padding-bottom: 60px;
     background-color: #fff;
-    box-shadow: 2px 2px 2px #c0c0c0;
+    //box-shadow: 2px 2px 2px #c0c0c0;
 }
 
 .title {
@@ -30,5 +35,9 @@
     position: relative;
     font-size: 24px;
     padding: 12px;
+}
+
+.tooltip {
+    background: #b71c1c;
 }
 

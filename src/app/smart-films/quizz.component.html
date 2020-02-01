@@ -1,13 +1,14 @@
+
 <div class="tbg">
     <!--button mat-raised-button (click)="openDialog()">Affiner mon profil</button-->
     <div class="tbgwrap">
-        <button (click)='onNoClick()'>Quitter</button>
+        <div (click)='onNoClick()' class='tquit'><i class="far fa-times-circle"></i></div>
         <app-film-match  [parentSubject]="parentSubject">
         </app-film-match>
-        <div class="tcontrols">
-        <div (click)='onClick("like")'  class="tyes"><i class="fa fa-heart" aria-hidden="true"></i></div>
-        <div (click)='onClick("unseen")' class="tseen"><i class="fa fa-eye-slash fa-2x" aria-hidden="true"></i></div>
-        <div (click)='onClick("dislike")' class="tno"><i class="fa fa-times" aria-hidden="true"></i></div>
-        </div>
+            <div class="tcontrols">
+                <div (click)='onClick("like")'  class="tyes"><i class="fa fa-heart" aria-hidden="true"></i></div>
+                <div (click)='onClick("unseen")' class="tseen"><i class="fa fa-eye-slash fa-2x" aria-hidden="true"></i></div>
+                <div (click)='onClick("dislike")' class="tno"><i class="fa fa-times" aria-hidden="true"></i></div>
+            </div>
     </div>
 </div>

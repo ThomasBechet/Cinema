@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 import { trigger, keyframes, animate, transition } from "@angular/animations";
 import * as kf from './keyframes';
 import { Subject } from 'rxjs';
@@ -14,7 +14,8 @@ import { MoviesService } from '../movies.service';
       transition('* => like', animate(750, keyframes(kf.like))),
       transition('* => unseen', animate(750, keyframes(kf.unseen)))
     ])
-  ]
+  ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class FilmMatchComponent implements OnInit {
 
@@ -63,11 +64,11 @@ export class FilmMatchComponent implements OnInit {
   }
 
   private async loadFilm(id) {
+    //console.log("ID : ", id);
     try {
       const movie = await this.moviesService.getMovie(id);
       this.title = movie['movie']['title'];
-      //this.genre = 'temp'; // movie['genre'];
-      this.genre = movie['genre']; 
+      this.genre = 'temp'; // movie['genre']; 
       this.poster = movie['movie']['poster'];
     } catch(error) {
       console.log("Failed to load ", id, error);

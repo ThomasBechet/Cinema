@@ -21,7 +21,12 @@ import { FilmPageComponent } from './film-page/film-page.component';
 import { FilmMatchComponent } from './film-match/film-match.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule} from '@angular/material/tooltip';
+import { CommonModule } from '@angular/common'; 
 //import {DemoMaterialModule} from './smart-films/material-module';
+
+
+
 
 
 const appRoutes: Routes = [
@@ -57,9 +62,11 @@ const appRoutes: Routes = [
 	
 	
   ],
-  entryComponents: [QuizzFilm],
+  entryComponents: [QuizzFilm, SmartFilmsComponent],
   exports: [
-	  RouterModule
+	  RouterModule,
+	  //MatDialogModule,
+	  MatTooltipModule,
   ],
   imports: [
 	BrowserModule,
@@ -67,9 +74,10 @@ const appRoutes: Routes = [
 	ReactiveFormsModule,
 	HttpClientModule,
 	BrowserAnimationsModule,
+	CommonModule,
 	MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent, SmartFilmsComponent]
+  bootstrap: [AppComponent/*, SmartFilmsComponent*/]
 })
 export class AppModule { }
