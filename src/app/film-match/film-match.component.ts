@@ -1,12 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, keyframes, animate, transition } from "@angular/animations";
+import * as kf from './keyframes';
 import { Subject } from 'rxjs';
 import { MoviesService } from '../movies.service';
 
 @Component({
   selector: 'app-film-match',
   templateUrl: './film-match.component.html',
-  styleUrls: ['./film-match.component.scss']
+  styleUrls: ['./film-match.component.scss'],
+  animations: [
+    trigger('cardAnimator', [
+      transition('* => dislike', animate(750, keyframes(kf.dislike))),
+      transition('* => like', animate(750, keyframes(kf.like))),
+      transition('* => unseen', animate(750, keyframes(kf.unseen)))
+    ])
+  ]
 })
 export class FilmMatchComponent implements OnInit {
 
@@ -41,9 +49,9 @@ export class FilmMatchComponent implements OnInit {
 
   ngOnInit() {
     this.votes = {}
-
     this.loadFilm(this.templates[0]);
     this.parentSubject.subscribe(status => {
+      this.startAnimation(status);
       this.votes[this.templates[this.index]] = status;
       this.index++;
       if(this.index >= this.templates.length) {
@@ -58,7 +66,8 @@ export class FilmMatchComponent implements OnInit {
     try {
       const movie = await this.moviesService.getMovie(id);
       this.title = movie['movie']['title'];
-      this.genre = 'temp'; // movie['genre'];
+      //this.genre = 'temp'; // movie['genre'];
+      this.genre = movie['genre']; 
       this.poster = movie['movie']['poster'];
     } catch(error) {
       console.log("Failed to load ", id, error);
@@ -98,5 +107,16 @@ export class FilmMatchComponent implements OnInit {
     }
 
     this.votes = {}
+  }
+
+  startAnimation(state) {
+    if (!this.animationState) {
+      this.animationState = state;
+    }
+  }
+
+  resetAnimationState(state) {
+    this.animationState = '';
+    this.index++;
   }
 }
