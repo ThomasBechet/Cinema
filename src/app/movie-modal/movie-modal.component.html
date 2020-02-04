@@ -1,0 +1,53 @@
+<div id="movie" class="modal" *ngIf="displayModal">
+    <div class="modal-content">
+        <div class="modal-container" style="display:flex;">
+            <span class="close-modal" (click)="hideModal()">&times;</span>
+            <img *ngIf="!movie.poster" src="../../assets/img/abstract-image.jpg" style="width: 500px;">
+            <img *ngIf="movie.poster" src="{{movie.poster}}">
+            <div>
+                <div class="modal-movie-titre">
+                    <h1>{{movie.title}}</h1>
+                    <div class="modal-genre">
+                        <p class="genre">{{movie.genres.join(', ')}}</p>
+                        <span *ngIf="movie.rated" class="rated">{{movie.rated}}</span>
+                        <span *ngIf="!movie.rated" class="rated">N/A</span>
+                        <span *ngIf="movie.runtime" class="duration">{{movie.runtime}} min</span>
+                        <span *ngIf="!movie.runtime" class="duration">N/A</span>
+                    </div>
+                    <div class="movie-numbers">
+                        <div class="modal-rating">
+                            <div><i class="fas fa-heart"></i>
+                                <h4 *ngIf="movie.avgRatings">{{movie.avgRatings}}</h4>
+                                <h4 *ngIf="!movie.avgRatings">N/A</h4>
+                            </div>
+                            <p>Rating</p>
+                        </div>
+                        <div class="score">
+                            <div><i class="fas fa-thumbs-up"></i>
+                                <h4 *ngIf="movie.score">{{movie.score.toFixed(1)}}</h4>
+                                <h4 *ngIf="!movie.score">N/A</h4>
+                            </div>
+                            <p>Score</p>
+                        </div>
+                        <div class="awards">
+                            <div><i class="fas fa-trophy"></i>
+                                <h4 *ngIf="movie.awards">{{movie.awards.nom + movie.awards.win}}</h4>
+                                <h4 *ngIf="!movie.awards">0</h4>
+                            </div>
+                            <p>Awards</p>
+                        </div>
+                    </div>
+                </div>
+                <p *ngIf="movie.plot" class="movie-description">{{movie.plot}}</p>
+                <p *ngIf="!movie.plot" class="movie-description">Aucune description n'est disponnible pour ce film.</p>
+                <a *ngIf="movie.imdbid" target="_blank" href="https://www.imdb.com/title/{{movie.imdbid}}/">Voir plus</a>
+                <div class="modal-buttons">
+                    <button (click)="toggleLike(movie._id)">Like <i *ngIf="isLiked" class="fas fa-heart"></i><i
+                            *ngIf="!isLiked" class="far fa-heart"></i></button>
+                    <button (click)="toggleView(movie._id)">View <i *ngIf="isViewed" class="fas fa-eye"></i><i
+                            *ngIf="!isViewed" class="far fa-eye-slash"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

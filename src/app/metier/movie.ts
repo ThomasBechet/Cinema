@@ -16,5 +16,6 @@ export class Movie {
     countrires: Array<string>;;
     imdbid : string;
     views : number;
-    avgRating : number; //Avg of ratings value
+    avgRatings : number; 
+    runtime : number; 
 }

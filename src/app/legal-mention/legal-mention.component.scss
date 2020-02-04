@@ -1,0 +1,20 @@
+::ng-deep hr {
+  height: 2px;
+  background-color: #f90;
+  margin-bottom: 4rem;
+}
+h1.title-mention {
+    text-align: center;
+    color: white;
+}
+p.text-color-important{
+    color: #ff9900;
+}
+::ng-deep body {
+  font-family: "Mada", sans-serif;
+  background-color: #171710f5 !important;
+}
+
+span.text-header{
+    color: white;
+}

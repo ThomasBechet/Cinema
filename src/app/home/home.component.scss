@@ -1,16 +1,110 @@
-
-
-.smart-films {
-    color: white;
-    background-color: rgb(51, 51, 51);
-    text-align: center;
+::ng-deep body {
+  font-family: "Mada", sans-serif;
+  background-color: #0e0e0e;
 }
 
-.find-film {
-    background-color: white;
-    color: rgb(51, 51, 51);
-    cursor: pointer;
-    margin: 10px;
-    padding: 5px;
+::ng-deep i {
+  font-style: normal;
 }
 
+.card-wrapper {
+  width: 400px;
+  position: relative;
+  height: auto;
+}
+
+.card-wrapper img {
+  //  width: 100%;
+}
+
+.panel-img {
+  width: 310px;
+  height: 355px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.slackslide {
+  height: 75%;
+  max-height: 500px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.overlayMini {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.overlayMini:hover {
+  opacity: 0.8;
+  transition: all 0.3s ease-out;
+
+  cursor: pointer;
+}
+
+/*overlayMini Background*/
+
+.panel-vingette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.panel-gradient {
+  position: absolute;
+  width: 100%;
+  height: 65%;
+  bottom: 0;
+  opacity: 0.65;
+  z-index: 1;
+}
+
+/*overlayMini Text*/
+
+.panel-text {
+  position: absolute;
+  width: 80%;
+  height: 60px;
+  margin: 0 auto;
+  left: 25px;
+  bottom: 0;
+  z-index: 2;
+}
+
+/*titre*/
+
+.panel-title {
+  font-size: 1.5em;
+  font-weight: 300;
+  font-family: "Airbnb Cereal App Bold";
+  letter-spacing: 0;
+  color: #fff;
+}
+
+.sectionName {
+  font-size: 33px;
+  font-family: "Mada", "Open Sans", Helvetica, Arial, sans-serif;
+  margin-bottom: -12px;
+  margin-top: 10px;
+  color: white;
+}
+
+::ng-deep hr {
+  height: 2px;
+  background-color: #f90;
+  margin-bottom: 4rem;
+}

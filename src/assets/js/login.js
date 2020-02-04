@@ -31,7 +31,7 @@ document.querySelector('#passwordConnect').addEventListener('focus', function(e)
     }
   });
 });
-document.querySelector('#submitConnect').addEventListener('focus', function(e) {
+document.querySelector('.submit-connect').addEventListener('focus', function(e) {
   if (current) current.pause();
   current = anime({
     targets: 'path',

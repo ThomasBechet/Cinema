@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from '../session.service';
-import { Router } from '@angular/router';
+import { Route, ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '../movies.service';
+import { Movie } from '../metier/movie';
 
 @Component({
   selector: 'app-home',
@@ -10,16 +11,22 @@ import { MoviesService } from '../movies.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private movies : MoviesService, private session: SessionService, private router : Router) { }
+  rdmMovies: Array<Movie>;
+  selectedMovie: Movie;
+  showVar: boolean = false;
+  movieLoaded: boolean = false;
 
-  private username;
-  private email;
+  constructor(private session: SessionService, private router: Router, private moviesService: MoviesService) { }
 
   ngOnInit() {
     this.session.preconnect()
     .then((response) => {
-      this.username = this.session.getUsername();
-      this.email = this.session.getEmail();
+      this.moviesService.getRandomMovie(8, ["poster"])
+      .then((value) => {
+        this.rdmMovies = <Array<Movie>>value;
+        this.loadScript('../assets/js/slick.min.js');
+        this.loadScript('../assets/js/slider.js');
+      });
     })
     .catch((error) => {
       console.log('try to access home but could not preconnect');
@@ -27,103 +34,23 @@ export class HomeComponent implements OnInit {
       this.router.navigateByUrl('/');  
     });
   }
-
-
-  onDisconnect() {
-    this.session.disconnect();
-    this.router.navigateByUrl('/');
-  }
-  
-  onPatch() {
-    this.session.updateName("yolo2")
-    .then((response) => {
-      console.log("name updated");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    this.session.updateEmail("yolo2@gmail.com")
-    .then((response) => {
-      console.log("mail updated");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-    this.session.updatePassword("yolo2")
-    .then((response) => {
-      console.log("password updated");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  public loadScript(url: string) {
+    const body = <HTMLDivElement>document.body;
+    const script = document.createElement('script');
+    script.innerHTML = '';
+    script.src = url;
+    script.async = false;
+    script.defer = true;
+    body.appendChild(script);
   }
 
-  onDelete() {
-    this.session.delete()
-    .then((response) => {
-      this.router.navigateByUrl('/');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+  showModal(movie_id) {
+    this.moviesService.getMovie(movie_id)
+      .then((value) => {
+        this.selectedMovie = value['movie'];
+        this.showVar = true;
+
+      });
   }
 
-  onGetViewedMovies() {
-    this.movies.getViewedMovies()
-    .then((value) => {
-      console.log(value);
-    })
-    .catch((value) => {
-      console.log(value);
-    });
-  }
-
-  onGetMovies() {
-    this.movies.getMovies(1, 20)
-    .then((value) => {
-      console.log(value);
-    })
-    .catch((value) => {
-      console.log(value);
-    });
-  }
-
-  onGetSpecificMovies() {
-    this.movies.getMovie("5dcfb530fb30a6da7a681267")
-    .then((value) => {
-      console.log(value);
-    })
-    .catch((value) => {
-      console.log(value);
-    });
-  }
-
-  onGenerateMovieList() {
-    this.movies.generateMovieList()
-    .then((value) => {
-      console.log(value);
-    })
-    .catch((value) => {
-      console.log(value);
-    });
-  }
-
-  onSwapView() {
-    this.movies.swapView("5dcfb530fb30a6da7a681267")
-    .then((value) => {
-      console.log(value);
-    })
-    .catch((value) => {
-      console.log(value);
-    });
-  }
-  onSwapLike() {
-    this.movies.swapLike("5dcfb530fb30a6da7a681267")
-    .then((value) => {
-      console.log(value);
-    })
-    .catch((value) => {
-      console.log(value);
-    });
-  }
 }

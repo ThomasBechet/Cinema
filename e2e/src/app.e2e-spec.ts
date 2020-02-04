@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('cinematch app is running!');
+    expect(page.getTitleText()).toEqual('Welcome to imo!');
   });
 
   afterEach(async () => {

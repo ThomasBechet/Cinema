@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<div class="movie-bg-header">
+  <div class="head">
+    <section class="logo"><b>A<span>ll</span>&nbsp;<span>M</span>ov<span>ie</span>s</b></section>
+  </div>
+</div>
+<section class="allmovies">
+  <div class="main">
+    <div class="test">
+      <ul class="options">
+        <li class="active">Cherchez un film fait pour vous !</li>
+      </ul>
+      <div id="forms">
+        <form id="range-form">
+          <p>Ratings</p>
+          <div class="group">
+            <input type="range" [(ngModel)]="range" (change)="slide($event)" step="1" min="0" max="10" id="range" name="range">
+            <p id="results">{{range}}</p>
+          </div>
+        </form>
+        <div id="search-input">
+          <input type="search"  [(ngModel)]="search" (ngModelChange)="searchMovie($event)" id="search" results="5" value=""><i class="fas fa-search"></i>
+        </div>
+      </div>
+      <section id="movies">
+        <div *ngFor="let movie of movies | paginate: { itemsPerPage: 15, currentPage: p } ">
+          <figure (click)="showModal(movie)">
+            <img *ngIf="movie.poster" src="{{movie.poster}}">
+            <img *ngIf="!movie.poster" src="../../assets/img/abstract-image.jpg">
+            <figcaption>
+              <h5 class="essaie">{{movie.title}}</h5>
+              <p>{{movie.genres}}</p>
+              <div class="rating"><i class="fas fa-heart"></i>
+                <h4 *ngIf="movie.avgRatings">{{movie.avgRatings}}</h4>
+                <h4 *ngIf="!movie.avgRatings">N/A</h4>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      <div id="pagination">
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+</section>
+<div>
+  <movie-modal [displayModal]="showVar" [isLiked]="isLiked" [isViewed]="isViewed" [movie]="selectedMovie"
+    (displayModalChange)="this.showVar = $event"> </movie-modal>
+</div>
+<app-footer></app-footer>

@@ -8,14 +8,14 @@ export class CommunicationService {
 
   readonly KW_errorMsg = 'errorMsg';
 
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   public post(url, header, body) {
     const httpHeader = new HttpHeaders(header);
     return new Promise((resolve, reject) => {
-      this.httpClient.post(url, body, {headers : httpHeader}).subscribe(
+      this.httpClient.post(url, body, { headers: httpHeader }).subscribe(
         (response) => {
-          if(response.hasOwnProperty(this.KW_errorMsg)) {
+          if (response.hasOwnProperty(this.KW_errorMsg)) {
             reject(response[this.KW_errorMsg]);
           } else {
             resolve(response);
@@ -27,13 +27,13 @@ export class CommunicationService {
       );
     });
   }
-  
+
   public get(url, header) {
     const httpHeader = new HttpHeaders(header);
     return new Promise((resolve, reject) => {
-      this.httpClient.get(url, {headers : httpHeader}).subscribe(
+      this.httpClient.get(url, { headers: httpHeader }).subscribe(
         (response) => {
-          if(response.hasOwnProperty(this.KW_errorMsg)) {
+          if (response.hasOwnProperty(this.KW_errorMsg)) {
             reject(response[this.KW_errorMsg]);
           } else {
             resolve(response);
@@ -49,9 +49,9 @@ export class CommunicationService {
   public delete(url, header) {
     const httpHeader = new HttpHeaders(header);
     return new Promise((resolve, reject) => {
-      this.httpClient.delete(url, {headers : httpHeader}).subscribe(
+      this.httpClient.delete(url, { headers: httpHeader }).subscribe(
         (response) => {
-          if(response.hasOwnProperty(this.KW_errorMsg)) {
+          if (response.hasOwnProperty(this.KW_errorMsg)) {
             reject(response[this.KW_errorMsg]);
           } else {
             resolve(response);

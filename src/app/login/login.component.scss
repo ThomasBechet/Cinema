@@ -10,7 +10,7 @@
 }
 
 .page {
-  /* background: #D4D4CB; */
+  background: #D4D4CB; 
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.3)),
     url("../../assets/img/collage.jpg");
   display: flex;
@@ -56,7 +56,7 @@
   }
 }
 .login {
-  font-size: 50px;
+  font-size: 35px;
   font-weight: 900;
   margin: 50px 40px 40px;
 }

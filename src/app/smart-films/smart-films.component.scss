@@ -1,0 +1,429 @@
+@import url('https://fonts.googleapis.com/css?family=Mada&display=swap');
+::ng-deep .movie-bg-header {
+  font-family: 'Mada', sans-serif;
+  background: url('../../assets/img/wall.jpg') center no-repeat;
+  background-size:cover;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+
+::ng-deep i {
+  font-style: normal;
+} 
+
+.allmovies{
+  background-color: #0e0e0e;
+  font-size: 62.5%;
+}
+
+.essaie{
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+::ng-deep hr {
+  height: 2px;
+  background-color: #f90;
+  margin-bottom: 4rem;
+}
+
+::ng-deep  .main {
+  width: 1100px;
+    background: whitesmoke;
+    margin: auto;
+    -webkit-transform: translateY(-5%);
+    transform: translateY(-5%);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 1.5em 2em;
+    z-index: -10px;
+    
+}
+#pagination{
+  text-align: center;
+  font-size: 14px;
+   margin-top: 25px;
+}
+::ng-deep .main ul {
+  list-style: none;
+}
+
+::ng-deep .options {
+    display: flex;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+::ng-deep  .options li {
+    flex: 1;
+    padding-bottom: 1em;
+    border-bottom: solid 1px lightgray;
+    font-weight: 600;
+    font-size: 1.5em;
+    color: #737373;
+    cursor: pointer;
+}
+::ng-deep  .options li:hover {
+    color: #dcbe00;
+    border-bottom-color: #dcbe00;
+    border-bottom-width: 2px;
+}
+::ng-deep .options .active {
+    color: #dcbe00;
+    border-bottom: solid 2px #dcbe00;
+}
+
+#movies {
+    min-height: 75vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+::ng-deep #movies figure {
+    background-color: white;
+    width: 19em;
+    margin: 1em;
+    box-shadow: 0 5px 15px grey;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+::ng-deep #movies figure:hover {
+  -webkit-transform: scale(1.04);
+          transform: scale(1.04);
+  box-shadow: 0 -3px 20px gray;
+}
+::ng-deep #movies figure img {
+  height: 21em;
+}
+#movies figure figcaption {
+  line-height: 2;
+  padding: 0 .80em;
+  height: 90px;
+}
+#movies figure figcaption h5 {
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  color: #737373 !important;
+}
+#movies figure figcaption p {
+  text-transform: capitalize !important;
+  font-size: 1.1em !important;
+  font-weight: 600 !important;
+  color: #dcbe00 !important;
+  margin-bottom: 11px;
+}
+#movies figure figcaption .rating {
+  display: flex;
+  align-items: center;
+}
+#movies figure figcaption .rating .fa-heart {
+  color: #fa5050;
+  margin: .50em .50em .50em 0;
+}
+#movies figure figcaption .rating h4 {
+  color: black;
+}
+#movies figure figcaption button {
+  border: 0;
+  font-size: 17px;
+  cursor: pointer;
+  color: #dcbe00;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 8px;
+}
+
+#movies figure img {
+    height: 21em;
+}
+
+::ng-deep  img {
+  width: 100%;
+  border-style: none;
+}
+
+#movies figure figcaption {
+    line-height: 2;
+    padding: 5px .80em;
+    height: 90px;
+}
+
+#movies figure figcaption h5 {
+    text-transform: uppercase;
+    font-weight: 600 !important;
+    color: #737373 !important;
+    font-size: 0.8rem !important;
+    margin-bottom: 5px !important;
+}
+
+#movies figure figcaption p {
+    text-transform: capitalize ;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #dcbe00;
+}
+
+#movies figure figcaption .rating {
+    display: flex;
+    align-items: baseline;
+}
+
+#movies figure figcaption .rating .fa-heart {
+    color: #fa5050;
+    margin: .50em .50em .50em 0;
+    font-size: larger;
+}
+
+#moviemodal {
+  position: absolute; 
+  top: 40px; 
+  left: 100px; 
+  right: 100px; 
+  bottom: auto; 
+  background: rgb(255, 255, 255); 
+  overflow: auto; 
+  border-radius: 3px; 
+  outline: none;
+}
+
+::ng-deep  h4 {
+  font-size: 1.1rem;
+}
+
+::ng-deep .test{
+  margin-top:0px;
+}
+
+::ng-deep #forms {
+  padding: 20px 10px;
+  display: flex;
+  align-items: center;
+}
+
+#range-form {
+  flex: 1;
+  margin-right: 5px;
+}
+#range-form p {
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #4d4d4d;
+}
+#range-form .group {
+  display: flex;
+  align-items: center;
+}
+#range-form .group #range {
+  -webkit-appearance: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+#range-form .group #range::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #dcbe00;
+  position: absolute;
+  z-index: -1;
+}
+#range-form .group #results {
+  width: 28px;
+  text-align: center;
+  font-size: 13px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: white;
+  box-shadow: 0 2px 5px 1px lightgray;
+}
+
+::-webkit-input-placeholder {
+  color: lightgray;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+:-ms-input-placeholder {
+  color: lightgray;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+::-ms-input-placeholder {
+  color: lightgray;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+::placeholder {
+  color: lightgray;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+#search-input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+#search-input #search {
+  letter-spacing: 1px;
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: solid 2px lightgray;
+  padding: 5px 20px 5px 10px;
+  color: gray;
+  transition: border-bottom-color .3s;
+  font-size: 1.5rem;
+}
+#search-input #search:focus {
+  outline: none;
+  border-bottom-color: #dcbe00;
+}
+#search-input .fa-search {
+  color: lightgray;
+  position: absolute;
+  right: 0;
+  padding-right: 8px;
+  transform: rotate(95deg);
+  -webkit-transform: rotate(95deg);
+  -ms-transform: rotate(95deg);
+  padding: 0;
+  font-size: large;
+}
+
+/*
+CUSTOM SLIDER
+*/
+#forms #range-form .group #range {
+  -webkit-appearance: none;
+  outline: none;
+  background: #dcbe00;
+  height: 3px;
+  border-radius: 5px;
+}
+#forms #range-form .group #range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #dcbe00;
+}
+
+/* FIREFOX */
+#range::-moz-range-thumb {
+  border: none;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: #dcbe00;
+  cursor: pointer;
+}
+
+#range::-moz-range-track {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  background: #dcbe00;
+  border-radius: 5px;
+}
+
+[type=search] {
+    -webkit-appearance: textfield;
+    outline-offset: -2px;
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.logo {
+  text-align: center;
+//   width: 65%;
+  height: 250px;
+  margin: auto;
+  margin-top: 13%;
+  /* position: absolute; */
+  margin-bottom: 15px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+   user-select: none;
+}
+
+::ng-deep  .logo b{
+  font: 400 19vh "Mada";
+  color: #ffe;
+  text-shadow: 0 -40px 100px, 0 0 2px, 0 0 1em #ffc107, 0 0 0.5em #ffc107, 0 0 0.1em #ffc107, 0 10px 3px #000;
+}
+::ng-deep  .logo b span{
+  animation: blink linear infinite 2s;
+}
+::ng-deep  .logo b span:nth-of-type(2){
+  animation: blink linear infinite 3s;
+}
+@keyframes blink {
+  78% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  79%{
+     color: #333;
+  }
+  80% {
+    
+    text-shadow: none;
+  }
+  81% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  82% {
+    color: #333;
+    text-shadow: none;
+  }
+  83% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+  92% {
+    color: #333;
+    text-shadow: none;
+  }
+  92.5% {
+    color: inherit;
+    text-shadow: inherit;
+  }
+}
+
+::ng-deep *, *:before, *:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  ::ng-deep .stackedcards.init {
+    opacity: 0; /* définissez l'opacité sur 0 si vous souhaitez un effet de fondu enchaîné pour empiler des cartes au chargement de la page */
+ }

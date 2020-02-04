@@ -1,7 +1,39 @@
-<div class="container">
-    <app-custom-navbar></app-custom-navbar>   
-<br/>
-<br/>
-<br/>
-    <p>SMART FILMS</p>     
+<app-navbar></app-navbar>
+<div class="movie-bg-header">
+    <div class="head">
+        <section class="logo"><b>S<span>mart</span>&nbsp;<span>M</span>ov<span>ie</span>s</b></section>
+    </div>
 </div>
+<section class="allmovies">
+    <div class="main">
+        <div class="test">
+            <ul class="options">
+                <li class="active">Films séléctionné pour vous!</li>
+            </ul>
+            <section id="movies">
+                <div *ngFor="let movie of movies | paginate: { itemsPerPage: 20, currentPage: p }">
+                    <figure (click)="showModal(movie)">
+                        <img *ngIf="movie.poster" src="{{movie.poster}}">
+                        <img *ngIf="!movie.poster" src="../../assets/img/abstract-image.jpg">
+                        <figcaption>
+                            <h5 class="essaie">{{movie.title}}</h5>
+                            <p>{{movie.genres}}</p>
+                            <div class="rating"><i class="fas fa-heart"></i>
+                                <h4 *ngIf="movie.avgRatings">{{movie.avgRatings}}</h4>
+                                <h4 *ngIf="!movie.avgRatings">N/A</h4>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </div>
+            </section>
+            <div id="pagination">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</section>
+<div>
+    <movie-modal [displayModal]="showVar" [isLiked]="isLiked" [isViewed]="isViewed" [movie]="selectedMovie"
+        (displayModalChange)="this.showVar = $event"> </movie-modal>
+</div>
+<app-footer></app-footer>
