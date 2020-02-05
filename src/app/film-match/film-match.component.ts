@@ -68,7 +68,7 @@ export class FilmMatchComponent implements OnInit {
     try {
       const movie = await this.moviesService.getMovie(id);
       this.title = movie['movie']['title'];
-      this.genre = 'temp'; // movie['genre']; 
+      this.genre =  movie['movie']['genres']; //'temp'
       this.poster = movie['movie']['poster'];
     } catch(error) {
       console.log("Failed to load ", id, error);

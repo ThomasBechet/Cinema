@@ -1,10 +1,7 @@
-import { Component, OnInit, Inject, HostListener  } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, HostListener  } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Subject } from 'rxjs';
 
-export interface DialogData {
-  film: string ;
-}
 
 export enum KEY_CODE {
   LEFT_ARROW = 37,
@@ -24,26 +21,21 @@ export class SmartFilmsComponent implements OnInit {
   film: string;
   quizDialog: MatDialogRef<QuizzFilm>;
 
-  constructor(public dialog: MatDialog, ) {
+  constructor(public dialog: MatDialog) {}
   
-  }
-  
-  ngOnInit() {
-  }
+  ngOnInit() {  }
   
   
   onClick(status) {
-    console.log("status : ", status);
     this.parentSubject.next(status);
   }
 
   
   openDialog(): void {
-    this.quizDialog = this.dialog.open(QuizzFilm);
-
-    //dialogRef.afterClosed().subscribe(result => {
-    //  console.log('The dialog was closed');
-    //});
+    this.quizDialog = this.dialog.open(QuizzFilm,  {
+       disableClose: false,
+       autoFocus: true  
+    });
   }
 }
 
@@ -57,8 +49,7 @@ export class QuizzFilm {
   parentSubject: Subject<string> = new Subject();
 
 constructor(
-  public dialogRef: MatDialogRef<QuizzFilm>,
-  @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  public dialogRef: MatDialogRef<QuizzFilm>) {}
 
   onNoClick(): void {
     this.dialogRef.close();

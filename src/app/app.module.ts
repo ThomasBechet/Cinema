@@ -22,7 +22,13 @@ import { FilmMatchComponent } from './film-match/film-match.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule} from '@angular/material/tooltip';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
+
+
+
+//import {
+//    MatDialogModule, MatFormFieldModule, MatButtonModule, MatInputModule
+//} from '@angular/material';
 //import {DemoMaterialModule} from './smart-films/material-module';
 
 
@@ -57,7 +63,7 @@ const appRoutes: Routes = [
 	JwPaginationComponent,
 	FilmMatchComponent,
 	SmartFilmsComponent,
-	QuizzFilm,
+	QuizzFilm
 	//DemoMaterialModule,
 	
 	
@@ -67,6 +73,11 @@ const appRoutes: Routes = [
 	  RouterModule,
 	  //MatDialogModule,
 	  MatTooltipModule,
+		MatDialogModule, 
+		//MatFormFieldModule, 
+		//MatButtonModule, 
+		//SMatInputModule
+	
   ],
   imports: [
 	BrowserModule,

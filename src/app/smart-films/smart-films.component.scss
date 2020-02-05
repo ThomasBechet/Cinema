@@ -1,5 +1,5 @@
+
 .tbg{
-    /* prevents horizontal scroll bar appearing  */
     overflow-x:hidden;  
     overflow-y:hidden; 
     /*height: 720px;
@@ -7,30 +7,30 @@
     //background-color: #fff;
     margin: 0 auto;
     //border: 1px solid #c0c0c0;
-  }
+}
   
-  .tbgwrap { padding: 10px; }
-  .theader { height: 65px; border-bottom: 1px solid #c0c0c0; }
-  .theader i.fa-comments {
+.tbgwrap { padding: 10px; }
+.theader { height: 65px; border-bottom: 1px solid #c0c0c0; }
+.theader i.fa-comments {
       color: #c0c0c0;
       font-size: 40px;
       //display: inline-block;
       float: right;
       padding: 10px 20px;
       position: relative;
-  }
-  .theader i.fa-cog {
+}
+.theader i.fa-cog {
       color: #c0c0c0;
       font-size: 40px;
       //display: inline-block;
       float: left;
       padding: 10px 20px;
       position: relative;
-  }
-  .tlogo { width: 100px; margin: 0 auto; padding: 10px; }
-  .tlogo img { width: 100px; }
+}
+.tlogo { width: 100px; margin: 0 auto; padding: 10px; }
+.tlogo img { width: 100px; }
   
-  .tno {
+.tno {
       background-color: #fff;
       height: 120px;
       width: 120px;
@@ -44,14 +44,14 @@
       left: 25px;
       cursor: pointer;
       border: 10px solid #e0be8a
-  }
-  .tno i {
+}
+.tno i {
       //color: #ff695b;
       color: #f90;
       font-size: 80px;
       padding: 17px 28px;
-  }
-  .tseen {
+}
+.tseen {
       background-color: #fff;
       height: 50px;
       width: 50px;
@@ -66,14 +66,14 @@
       border: 10px solid #e0be8a;
       cursor: pointer;
       padding: 20px
-  }
-  .tseen .fa-eye-slash {
+}
+.tseen .fa-eye-slash {
       font-size: 30px;
       padding: 10px 2px;
       //color: #DDDDDD;
       color: #f90;
-  }
-  .tyes {
+}
+.tyes {
       background-color: #fff;
       height: 120px;
       width: 120px;
@@ -87,14 +87,14 @@
       left: 0px;
       border: 10px solid #e0be8a;
       cursor: pointer;
-  }
-  .tyes i {
+}
+.tyes i {
       //color: #5de19c;
       color: #f90;
       font-size: 60px;
       padding: 35px 30px;
-  }
-  .credit {
+}
+.credit {
       width: 400px;
       height: auto;
       position: relative;
@@ -102,8 +102,8 @@
       text-align: center;
       background-color: #f0f0f0;
       padding: 2px 0px;
-  }
-  .credit a {
+}
+.credit a {
       font-size: 7px;
       letter-spacing: 5px;
       color: #c0c0c0;
@@ -111,17 +111,25 @@
       text-transform: uppercase;
       font-family: 'Helvetica', sans-serif;
       font-style: italic;
-  }
-  ::ng-deep *{
-    box-sizing: unset !important; 
-    
-    
+}
+::ng-deep *{
+    box-sizing: unset !important;     
 }
 
 ::ng-deep .cdk-overlay-pane {
     width: auto !important; 
     
 }
+
+
+
+::ng-deep .cdk-global-scrollblock{
+    position: static !important;
+    width: initial !important;
+    overflow-y: hidden !important;
+    top: unset !important;
+    left: unset !important;
+  }
 .tcontrols{
     display: block;
     text-align: center;
@@ -133,6 +141,10 @@
     font-size: 20px;
     cursor: pointer;
 }
-/*::body *{
-    background-color: #323232;
-}*/
+
+.test{
+    color: black;
+}
+
+
+
